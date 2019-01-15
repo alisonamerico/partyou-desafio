@@ -1,0 +1,1 @@
+web: gunicorn partyou.wsgi --log-file -
