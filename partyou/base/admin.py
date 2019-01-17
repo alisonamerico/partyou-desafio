@@ -49,19 +49,19 @@ class UserAdmin(admin.ModelAdmin):
     filter_horizontal = ('groups', 'user_permissions',)
 
     def get_fieldsets(self, request, obj=None):
-        if not obj:  # noqa
-            return self.add_fieldsets  # noqa
-        return super().get_fieldsets(request, obj)  # noqa
+        if not obj:  # pragma: no cover
+            return self.add_fieldsets  # pragma: no cover
+        return super().get_fieldsets(request, obj)  # pragma: no cover
 
     def get_form(self, request, obj=None, **kwargs):
         """
         Use special form during user creation
         """
-        defaults = {}  # noqa
-        if obj is None:  # noqa
-            defaults['form'] = self.add_form  # noqa
-        defaults.update(kwargs)  # noqa
-        return super().get_form(request, obj, **defaults)  # noqa
+        defaults = {}  # pragma: no cover
+        if obj is None:  # pragma: no cover
+            defaults['form'] = self.add_form  # pragma: no cover
+        defaults.update(kwargs)  # pragma: no cover
+        return super().get_form(request, obj, **defaults)  # pragma: no cover
 
     def get_urls(self):
         return [
@@ -74,13 +74,13 @@ class UserAdmin(admin.ModelAdmin):
 
     def lookup_allowed(self, lookup, value):
         # Don't allow lookups involving passwords.
-        return not lookup.startswith('password') and super().lookup_allowed(lookup, value)  # noqa
+        return not lookup.startswith('password') and super().lookup_allowed(lookup, value)  # pragma: no cover
 
     @sensitive_post_parameters_m
     @csrf_protect_m
     def add_view(self, request, form_url='', extra_context=None):
-        with transaction.atomic(using=router.db_for_write(self.model)):  # noqa
-            return self._add_view(request, form_url, extra_context)  # noqa
+        with transaction.atomic(using=router.db_for_write(self.model)):  # pragma: no cover
+            return self._add_view(request, form_url, extra_context)  # pragma: no cover
 
     def _add_view(self, request, form_url='', extra_context=None):
         # It's an error for a user to have add permission but NOT change
@@ -89,46 +89,46 @@ class UserAdmin(admin.ModelAdmin):
         # the permission to change users. To avoid the problem entirely, we
         # disallow users from adding users if they don't have change
         # permission.
-        if not self.has_change_permission(request):  # noqa
-            if self.has_add_permission(request) and settings.DEBUG:  # noqa
+        if not self.has_change_permission(request):  # pragma: no cover
+            if self.has_add_permission(request) and settings.DEBUG:  # pragma: no cover
                 # Raise Http404 in debug mode so that the user gets a helpful
                 # error message.
-                raise Http404(  # noqa
+                raise Http404(  # pragma: no cover
                     'Your user does not have the "Change user" permission. In '
                     'order to add users, Django requires that your user '
                     'account have both the "Add user" and "Change user" '
                     'permissions set.')
-            raise PermissionDenied  # noqa
-        if extra_context is None:  # noqa
-            extra_context = {}  # noqa
-        username_field = self.model._meta.get_field(self.model.USERNAME_FIELD)  # noqa
-        defaults = {  # noqa
+            raise PermissionDenied  # pragma: no cover
+        if extra_context is None:  # pragma: no cover
+            extra_context = {}  # pragma: no cover
+        username_field = self.model._meta.get_field(self.model.USERNAME_FIELD)  # pragma: no cover
+        defaults = {  # pragma: no cover
             'auto_populated_fields': (),
             'username_help_text': username_field.help_text,
         }
-        extra_context.update(defaults)  # noqa
-        return super().add_view(request, form_url, extra_context)  # noqa
+        extra_context.update(defaults)  # pragma: no cover
+        return super().add_view(request, form_url, extra_context)  # pragma: no cover
 
     @sensitive_post_parameters_m
     def user_change_password(self, request, id, form_url=''):
-        if not self.has_change_permission(request):  # noqa
-            raise PermissionDenied  # noqa
-        user = self.get_object(request, unquote(id))  # noqa
-        if user is None:  # noqa
-            raise Http404(_('%(name)s object with primary key %(key)r does not exist.') % {  # noqa
-                'name': self.model._meta.verbose_name,  # noqa
+        if not self.has_change_permission(request):  # pragma: no cover
+            raise PermissionDenied  # pragma: no cover
+        user = self.get_object(request, unquote(id))  # pragma: no cover
+        if user is None:  # pragma: no cover
+            raise Http404(_('%(name)s object with primary key %(key)r does not exist.') % {  # pragma: no cover
+                'name': self.model._meta.verbose_name,  # pragma: no cover
                 'key': escape(id),
             })
-        if request.method == 'POST':  # noqa
-            form = self.change_password_form(user, request.POST)   # noqa
-            if form.is_valid():  # noqa
-                form.save()  # noqa
-                change_message = self.construct_change_message(request, form, None)  # noqa
-                self.log_change(request, user, change_message)  # noqa
-                msg = gettext('Password changed successfully.')  # noqa
-                messages.success(request, msg)  # noqa
-                update_session_auth_hash(request, form.user)  # noqa
-                return HttpResponseRedirect(  # noqa
+        if request.method == 'POST':  # pragma: no cover
+            form = self.change_password_form(user, request.POST)   # pragma: no cover
+            if form.is_valid():  # pragma: no cover
+                form.save()  # pragma: no cover
+                change_message = self.construct_change_message(request, form, None)  # pragma: no cover
+                self.log_change(request, user, change_message)  # pragma: no cover
+                msg = gettext('Password changed successfully.')  # pragma: no cover
+                messages.success(request, msg)  # pragma: no cover
+                update_session_auth_hash(request, form.user)  # pragma: no cover
+                return HttpResponseRedirect(  # pragma: no cover
                     reverse(
                         '%s:%s_%s_change' % (
                             self.admin_site.name,
@@ -139,12 +139,12 @@ class UserAdmin(admin.ModelAdmin):
                     )
                 )
         else:
-            form = self.change_password_form(user)  # noqa
+            form = self.change_password_form(user)  # pragma: no cover
 
-        fieldsets = [(None, {'fields': list(form.base_fields)})]  # noqa
-        adminForm = admin.helpers.AdminForm(form, fieldsets, {})  # noqa
+        fieldsets = [(None, {'fields': list(form.base_fields)})]  # pragma: no cover
+        adminForm = admin.helpers.AdminForm(form, fieldsets, {})  # pragma: no cover
 
-        context = {  # noqa
+        context = {  # pragma: no cover
             'title': _('Change password: %s') % escape(user.get_username()),
             'adminForm': adminForm,
             'form_url': form_url,
@@ -163,9 +163,9 @@ class UserAdmin(admin.ModelAdmin):
             **self.admin_site.each_context(request),
         }
 
-        request.current_app = self.admin_site.name  # noqa
+        request.current_app = self.admin_site.name  # pragma: no cover
 
-        return TemplateResponse(  # noqa
+        return TemplateResponse(  # pragma: no cover
             request,
             self.change_user_password_template or
             'admin/auth/user/change_password.html',
@@ -183,7 +183,7 @@ class UserAdmin(admin.ModelAdmin):
         # button except in two scenarios:
         # * The user has pressed the 'Save and add another' button
         # * We are adding a user in a popup
-        if '_addanother' not in request.POST and IS_POPUP_VAR not in request.POST:  # noqa
-            request.POST = request.POST.copy()  # noqa
-            request.POST['_continue'] = 1  # noqa
-        return super().response_add(request, obj, post_url_continue)  # noqa
+        if '_addanother' not in request.POST and IS_POPUP_VAR not in request.POST:  # pragma: no cover
+            request.POST = request.POST.copy()  # pragma: no cover
+            request.POST['_continue'] = 1  # pragma: no cover
+        return super().response_add(request, obj, post_url_continue)  # pragma: no cover
