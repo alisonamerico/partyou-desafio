@@ -9,25 +9,23 @@ from django.utils.translation import gettext_lazy as _
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, username, email, password, **extra_fields):
+    def _create_user(self, email, password, **extra_fields):
         """
-        Create and save a user with the given username, email, and password.
+        Create and save a user with the given email, and password.
         """
-        if not username:  # pragma: no cover
-            raise ValueError('The given username must be set')  # pragma: no cover
+        if not email:  # pragma: no cover
+            raise ValueError('The given email must be set')  # pragma: no cover
         email = self.normalize_email(email)  # pragma: no cover
-        username = self.model.normalize_username(username)  # pragma: no cover
-        user = self.model(username=username, email=email, **extra_fields)  # pragma: no cover
+        user = self.model(email=email, **extra_fields)  # pragma: no cover
         user.set_password(password)  # pragma: no cover
         user.save(using=self._db)  # pragma: no cover
         return user  # pragma: no cover
 
-    def create_user(self, username, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('is_staff', False)  # pragma: no cover
+    def create_user(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault('is_superuser', False)  # pragma: no cover
-        return self._create_user(username, email, password, **extra_fields)  # pragma: no cover
+        return self._create_user(email, password, **extra_fields)  # pragma: no cover
 
-    def create_superuser(self, username, email, password, **extra_fields):
+    def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)  # pragma: no cover
         extra_fields.setdefault('is_superuser', True)  # pragma: no cover
 
@@ -36,7 +34,7 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:  # pragma: no cover
             raise ValueError('Superuser must have is_superuser=True.')  # pragma: no cover
 
-        return self._create_user(username, email, password, **extra_fields)  # pragma: no cover
+        return self._create_user(email, password, **extra_fields)  # pragma: no cover
 
 
 class User(AbstractBaseUser, PermissionsMixin):
