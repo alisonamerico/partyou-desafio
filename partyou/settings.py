@@ -76,6 +76,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'partyou.wsgi.application'
 
+# Configuração Django Debug Toolbar
+
+INTERNAL_IPS = config('INTERNAL_IPS', cast=Csv(), default='127.0.0.1')
+
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')  # pragma: no cover
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')  # pragma: no cover
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
