@@ -31,6 +31,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+AUTH_USER_MODEL = 'base.User'
 
 # Application definition
 
@@ -140,31 +141,31 @@ AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 # ------------------------------------------------------------------------------
 
 if AWS_ACCESS_KEY_ID:
-    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', }
-    AWS_PRELOAD_METADATA = True
-    AWS_AUTO_CREATE_BUCKET = False
-    AWS_QUERYSTRING_AUTH = True
-    AWS_S3_CUSTOM_DOMAIN = None
+    AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')  # pragma: no cover
+    AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')  # pragma: no cover
+    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400', }  # pragma: no cover
+    AWS_PRELOAD_METADATA = True  # pragma: no cover
+    AWS_AUTO_CREATE_BUCKET = False  # pragma: no cover
+    AWS_QUERYSTRING_AUTH = True  # pragma: no cover
+    AWS_S3_CUSTOM_DOMAIN = None  # pragma: no cover
 
-    COLLECTFAST_ENABLED = True
+    COLLECTFAST_ENABLED = True  # pragma: no cover
 
-    AWS_DEFAULT_ACL = 'private'
+    AWS_DEFAULT_ACL = 'private'  # pragma: no cover
 
     # Static Assets
     # ------------------------------------------------------------------------------
-    STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
-    STATIC_S3_PATH = 'static'
-    STATIC_ROOT = f'/{STATIC_S3_PATH}/'
-    STATIC_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{STATIC_S3_PATH}/'
-    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+    STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'  # pragma: no cover
+    STATIC_S3_PATH = 'static'  # pragma: no cover
+    STATIC_ROOT = f'/{STATIC_S3_PATH}/'  # pragma: no cover
+    STATIC_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{STATIC_S3_PATH}/'  # pragma: no cover
+    ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'  # pragma: no cover
 
     # Upload Media Folder
-    DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
-    DEFAULT_S3_PATH = 'media'
-    MEDIA_ROOT = f'/{DEFAULT_S3_PATH}/'
-    MEDIA_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{DEFAULT_S3_PATH}/'
+    DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'  # pragma: no cover
+    DEFAULT_S3_PATH = 'media'  # pragma: no cover
+    MEDIA_ROOT = f'/{DEFAULT_S3_PATH}/'  # pragma: no cover
+    MEDIA_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{DEFAULT_S3_PATH}/'  # pragma: no cover
 
-    INSTALLED_APPS.append('s3_folder_storage')
-    INSTALLED_APPS.append('storages')
+    INSTALLED_APPS.append('s3_folder_storage')  # pragma: no cover
+    INSTALLED_APPS.append('storages')  # pragma: no cover
