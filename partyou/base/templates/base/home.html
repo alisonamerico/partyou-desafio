@@ -8,6 +8,8 @@
     <meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="Alison Américo">
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+
     <title>PartyouDesafio</title>
 
     <!-- Bootstrap CSS -->
@@ -31,7 +33,7 @@
       <div class="overlay"></div>
       <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
         <div class="container">
-          <a class="navbar-brand" href="{% url 'home' %}">PartyouDesafio</a>
+          <a class="navbar-brand" href="{% url 'base:home' %}">PartyouDesafio</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <i class="lni-menu"></i>
           </button>
@@ -205,7 +207,7 @@
           <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
               <div class="site-info float-center">
-              <a class="navbar-brand" href="{% url 'home' %}">PartyouDesafio</a>
+              <a class="navbar-brand" href="{% url 'base:home' %}">PartyouDesafio</a>
               <div class="textwidget">
                 <p>lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse unde blanditiis nostrum mollitia aliquam sed. Numquam ipsum unde repellendus similique autem non ab quibusdam enim provident distinctio! Fugit tenetur, iusto.</p>
               </div>
@@ -218,7 +220,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="site-info float-left">
-                  <p>&copy; 2019 - PartyouDesafio. Todos os direitos reservados.</a></p>
+                  <p>{% now 'Y' %} - PartyouDesafio. Todos os direitos reservados.</a></p>
                 </div>
                 <div class="float-right">
                   <ul class="footer-social">
