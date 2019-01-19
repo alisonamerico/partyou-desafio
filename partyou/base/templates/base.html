@@ -1,146 +1,123 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="keywords" content="Bootstrap, Landing page, Template, Registration, Landing">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="author" content="Alison Américo">
-<link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
-
-<title>{% block title %}PartyouDesafio{% endblock title %}</title>
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'css/line-icons.css' %}">
-<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-<link rel="stylesheet" href="{% static 'css/owl.theme.css' %}">
-<link rel="stylesheet" href="{% static 'css/animate.css' %}">
-<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-<link rel="stylesheet" href="{% static 'css/nivo-lightbox.css' %}">
-<link rel="stylesheet" href="{% static 'css/main.css' %}">
-<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-
-
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="Alison Américo">
+	<!-- Meta Description -->
+	<meta name="description" content="Site desenvolvido para o desafio da empresa Partyou">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>{% block title %}PartyouDesafio{% endblock title %}</title>
+	<!--
+		CSS
+		============================================= -->
+	<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.skinFlat.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
 
 <body>
 
-<!-- Header Section Start -->
-<header id="home" class="hero-area-2">
-  <div class="overlay"></div>
-  <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
-    <div class="container">
-      <a class="navbar-brand" href="{% url 'base:home' %}">PartyouDesafio</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="lni-menu"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto w-100 justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#products">Produtos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link page-scroll" href="#map-area">Contato</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="row space-100">
-      <div class="col-lg-7 col-md-12 col-xs-12">
-        <div class="contents">
-          <h2 class="head-title">Produtos de qualidade com <br>  o menor preço do mercado</h2>
-          <p>lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse unde blanditiis nostrum mollitia aliequam sed. Numquam ipsum unde repellendus similique autem non ab quibusdam enim provident distinctio! Fugit tenetur, iusto.</p>
-        </div>
-      </div>
-      <div class="col-lg-5 col-md-12 col-xs-12">
-        <div class="intro-img">
-            <img src="{% static 'img/intro-mobile.png' %}" alt="">
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-    <!-- Header Section End -->
+	<!-- Start Header Area -->
+	<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="{% url 'base:home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="{% url 'base:home' %}">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">Produtos</a></li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">Contato</a></li>
+							<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!-- End Header Area -->
 
-{% block content %}{% endblock %}
+{% block content %}{% endblock content %}
 
-    <!-- Footer Section Start -->
-    <footer>
-      <!-- Footer Area Start -->
-      <section class="footer-Content">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 col-mb-12">
-              <div class="site-info float-center">
-              <a class="navbar-brand" href="{% url 'base:home' %}">PartyouDesafio</a>
-              <div class="textwidget">
-                <p>lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse unde blanditiis nostrum mollitia aliquam sed. Numquam ipsum unde repellendus similique autem non ab quibusdam enim provident distinctio! Fugit tenetur, iusto.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Copyright Start  -->
-       <div class="copyright">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="site-info float-left">
-                  <p>{% now 'Y' %} - PartyouDesafio. Todos os direitos reservados.</a></p>
-                </div>
-                <div class="float-right">
-                  <ul class="footer-social">
-                    <li><a class="facebook" href="#"><i class="lni-facebook-filled"></i></a></li>
-                    <li><a class="twitter" href="#"><i class="lni-twitter-filled"></i></a></li>
-                    <li><a class="linkedin" href="#"><i class="lni-linkedin-fill"></i></a></li>
-                    <li><a class="google-plus" href="#"><i class="lni-google-plus"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-       </div>
-      <!-- Copyright End -->
-      </section>
-      <!-- Footer area End -->
+	<!-- start footer Area -->
+	<footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Sobre</h6>
+						<p>
+							Somos a PartyouDesafio uma empresa nova no mercado brasileiro. Voltada à venda de produtos diversos
+							com o menor custo benefício. ;)
+						</p>
+					</div>
+				</div>
+<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+					</div>
+				</div>
+				<div class="col-lg-3  col-md-6 col-sm-6">
 
-    </footer>
-    <!-- Footer Section End -->
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Redes Sociais</h6>
+						<p>Let us be social</p>
+						<div class="footer-social d-flex align-items-right">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+				<p class="footer-text m-0">{% now 'Y' %} - PartyouDesafio. Todos os diretos reservados. Site criado com <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="https://github.com/alisonamerico" target="_blank">Alison Américo</a>.</p>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
 
-    <!-- Go To Top Link -->
-    <a href="#" class="back-to-top">
-      <i class="lni-chevron-up"></i>
-    </a>
+	<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'js/nouislider.min.js' %}"></script>
+	<script src="{% static 'js/countdown.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="{% static 'js/gmaps.min.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+</body>
 
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader" id="loader-1"></div>
-    </div>
-    <!-- End Preloader -->
-
-      <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="{% static 'js/jquery-min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/owl.carousel.js' %}"></script>
-    <script src="{% static 'js/jquery.mixitup.js' %}"></script>
-    <script src="{% static 'js/jquery.nav.js' %}"></script>
-    <script src="{% static 'js/jquery.vide.js' %}"></script>
-    <script src="{% static 'js/scrolling-nav.js' %}"></script>
-    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'js/wow.js' %}"></script>
-    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-    <script src="{% static 'js/nivo-lightbox.js' %}"></script>
-    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'js/waypoints.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-
-  </body>
 </html>

@@ -1,135 +1,293 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
+	<!-- start banner Area -->
+	<section class="banner-area">
+		<div class="container">
+			<div class="row fullscreen align-items-center justify-content-start">
+				<div class="col-lg-12">
+					<div class="active-banner-slider owl-carousel">
+						<!-- single-slide -->
+						<div class="row single-slide align-items-center d-flex">
+							<div class="col-lg-5 col-md-6">
+								<div class="banner-content">
+									<h1>Nike New <br>Collection!</h1>
+									<p>Produtos de qualidade com o menor preço do mercado. <br/>Aproveite nossas ofetas imperdíveis.</p>
+								</div>
+							</div>
+							<div class="col-lg-7">
+								<div class="banner-img">
+									<img class="img-fluid" src="{% static 'img/banner/banner-sapato-img.png' %}" alt="">
+								</div>
+							</div>
+						</div>
+						<!-- single-slide -->
+						<div class="row single-slide">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- start features Area -->
+	<section class="features-area section_gap">
+		<div class="container">
+			<div class="row features-inner">
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon1.png' %}" alt="">
+						</div>
+						<h6>Entrega grátis</h6>
+						<p>Frete grátis em todos os pedidos</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon2.png' %}" alt="">
+						</div>
+						<h6>Política de Devolução</h6>
+						<p>Ao constatar erro no pedido, pode devolver em até 15 dias</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon3.png' %}" alt="">
+						</div>
+						<h6>24/7 Suporte</h6>
+						<p>Entre em contato a qualquer hora do dia</p>
+					</div>
+				</div>
+				<!-- single features -->
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="single-features">
+						<div class="f-icon">
+							<img src="{% static 'img/features/f-icon4.png' %}" alt="">
+						</div>
+						<h6>Pagamento Seguro</h6>
+						<p>Faça suas compras com tranquilidade e segurança</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end features Area -->
 
 
-    <!-- Products section Start -->
-    <section id="products" class="section">
-      <div class="container">
-        <div class="section-header">   
-          <p class="btn btn-subtitle wow fadeInDown" data-wow-delay="0.2s">Produtos</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team wow fadeInUp" data-wow-delay="0.2s">
-              <div class="team-thumb">
-                <img src="{% static 'img/products/produto1.jpg' %}" alt="">
-              </div>
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Produto 1</h4>
-                  <p>R$ 30,00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team wow fadeInUp" data-wow-delay="0.3s">
-              <div class="team-thumb">
-                <img src="{% static 'img/products/produto2.jpg' %}" alt="">
-              </div>
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Produto 2</h4>
-                  <p>R$ 65,00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team wow fadeInUp" data-wow-delay="0.4s">
-              <div class="team-thumb">
-                <img src="{% static 'img/products/produto3.jpg' %}" alt="">
-              </div>
-              <div class="team-details">
-                <div class="team-inner">                  
-                  <h4 class="team-title">Produto 3</h4>
-                  <p>R$ 120,00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team wow fadeInUp" data-wow-delay="0.5s">
-              <div class="team-thumb">
-                <img src="{% static 'img/products/produto4.jpg' %}" alt="">
-              </div>
-              <div class="team-details">
-                <div class="team-inner">
-                  <h4 class="team-title">Produto 4</h4>
-                  <p>R$ 95,00</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Team section End -->
+	<!-- start product Area -->
+		<!-- single product slide -->
+		<div class="single-product-slider">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Produtos</h1>
+							<p>Coleções Exclusivas e Principais Lançamentos para o seu Esporte.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<!-- single product -->
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="{% static 'img/product/p1.jpg' %}" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>R$190.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- single product -->
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="{% static 'img/product/p2.jpg' %}" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>R$190.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- single product -->
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="{% static 'img/product/p3.jpg' %}" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>R$190.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- single product -->
+					<div class="col-lg-3 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="{% static 'img/product/p4.jpg' %}" alt="">
+							<div class="product-details">
+								<h6>addidas New Hammer sole
+									for Sports person</h6>
+								<div class="price">
+									<h6>R$190.00</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- end product Area -->
 
-    <!-- Map Section Start -->
-    <section id="map-area">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 padding-0">
-            <object style="border:0; height: 450px; width: 100%;" data="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d34015.943594576835!2d-106.43242624069771!3d31.677719472407432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86e75d90e99d597b%3A0x6cd3eb9a9fcd23f1!2sCourtyard+by+Marriott+Ciudad+Juarez!5e0!3m2!1sen!2sbd!4v1533791187584"></object>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Map Section End -->
+	<!-- Start related-product Area -->
+	<section class="related-product-area section_gap_bottom">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>Produtos diversos</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+							magna aliqua.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r1.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r2.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r3.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r5.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r6.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r7.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r9.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r10.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="single-related-product d-flex">
+								<a href="#"><img src="{% static 'img/home/r11.jpg' %}" alt=""></a>
+								<div class="desc">
+									<a href="#" class="title">Black lace Heels</a>
+									<div class="price">
+										<h6>R$189.00</h6>
+										<h6 class="l-through">R$210.00</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="ctg-right">
+						<a href="#" target="_blank">
+							<img class="img-fluid d-block mx-auto" src="{% static 'img/c5.jpg' %}" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End related-product Area -->
 
-    <!-- Contact Section Start -->
-    <section id="contact">
-      <div class="contact-form">
-        <div class="container">
-          <div class="row justify-content-center"> 
-            <div class="offset-top">
-              <div class="col-lg-12 col-md-12 col-xs-12">
-                <div class="contact-block wow fadeInUp" data-wow-delay="0.2s">
-                  <div class="section-header">   
-                    <p class="btn btn-subtitle wow fadeInDown" data-wow-delay="0.2s">Contato</p>
-                  </div>
-                  <form id="contactForm">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input type="text" class="form-control" id="name" name="name" placeholder="Nome" required data-error="Please enter your name">
-                          <div class="help-block with-errors"></div>
-                        </div>                                 
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input type="text" placeholder="Email" id="email" class="form-control" name="name" required data-error="Please enter your email">
-                          <div class="help-block with-errors"></div>
-                        </div> 
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <input type="text" placeholder="Titulo" id="msg_subject" class="form-control" required="" data-error="Please enter your subject">
-                          <div class="help-block with-errors"></div>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-group"> 
-                          <textarea class="form-control" id="message" placeholder="Mensagem" rows="7" data-error="Write your message" required></textarea>
-                          <div class="help-block with-errors"></div>
-                        </div>
-                        <div class="submit-button">
-                          <button class="btn btn-common btn-effect" id="submit" type="submit">Enviar</button>
-                          <div id="msgSubmit" class="h3 hidden"></div> 
-                          <div class="clearfix"></div> 
-                        </div>
-                      </div>
-                    </div>            
-                  </form>
-                </div>
-              </div>
-            </div> 
-          </div>
-        </div>
-      </div>        
-    </section>
-    <!-- Contact Section End -->
-
-{% endblock %}
+{% endblock content %}
