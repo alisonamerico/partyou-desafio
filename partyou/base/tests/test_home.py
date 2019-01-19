@@ -21,3 +21,16 @@ def test_title(resp):
 def test_home_link(resp):
     assert_contains(resp, f'href="{reverse("base:home")}">PARTYOUDESAFIO</a>')
     # assert_contains(resp, f'href="{reverse("base:home")}"><img src="{% static "img/logo.png" %}" alt=""></a>')
+
+
+@pytest.mark.parametrize(
+    'content', [
+        'Entrega grátis',
+        'Política de Devolução',
+        '24/7 Suporte',
+        'Pagamento Seguro',
+        'Produtos diversos',
+    ]
+)
+def test_home_content(resp, content):
+    assert_contains(resp, content)
