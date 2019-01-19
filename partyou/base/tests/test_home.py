@@ -19,4 +19,5 @@ def test_title(resp):
 
 
 def test_home_link(resp):
-    assert_contains(resp, f'href="{reverse("base:home")}">PartyouDesafio</a>')
+    assert_contains(resp, f'href="{reverse("base:home")}">PARTYOUDESAFIO</a>')
+    # assert_contains(resp, f'href="{reverse("base:home")}"><img src="{% static "img/logo.png" %}" alt=""></a>')
