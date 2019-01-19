@@ -1,118 +1,86 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
-
+{% load static %}
+<html lang="en">
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="{% static 'img/fav.png' %}">
-	<!-- Author Meta -->
-	<meta name="author" content="Alison Américo">
-	<!-- Meta Description -->
-	<meta name="description" content="Site desenvolvido para o desafio da empresa Partyou">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>{% block title %}PartyouDesafio{% endblock title %}</title>
-	<!--
-		CSS
-		============================================= -->
-	<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
-	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
-	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-	<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
-	<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
-	<link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}">
-	<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css' %}" />
-	<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.skinFlat.css' %}"/>
-	<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<meta charset="utf-8">
+	<title>{% block title %}PartyouDesafio{% endblock %}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="stylesheet" href="{% static 'assets/bootstrap.min.css' %}" media="screen" />
+	<link rel="stylesheet" href="{% static 'assets/custom.min.css' %}" media="screen" />
+	<link rel="stylesheet" href="{% static 'assets/extra.css' %}" media="screen" />
 </head>
-
 <body>
-
-	<!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="{% url 'base:home' %}">PARTYOUDESAFIO</a>
-					<!--<a class="navbar-brand logo_h" href="{% url 'base:home' %}"><img src="{% static 'img/logo.png' %}" alt=""></a>-->
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="{% url 'base:home' %}">Home</a></li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Produtos</a></li>
-							<li class="nav-item"><a class="nav-link" href="{% url 'base:contato' %}">Contato</a></li>
-							<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="{% url 'base:home' %}" class="navbar-brand">PartyouDesafio</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="{% url 'catalog:product_list' %}">Produtos</a>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:product_list' %}" id="download">Categorias <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+				{% for category in categories %}
+				<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+				{% endfor %}
+              </ul>
+            </li>
+			<li>
+				<a href="{% url 'contact' %}">Contato</a>
+			</li>
+          </ul>
+		  <form class="navbar-form navbar-left" role="search" action="{% url 'catalog:product_list' %}">
+	        <div class="form-group">
+	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
+	        </div>
+	      </form>
+          <ul class="nav navbar-nav navbar-right">
+			  <li><a href="{% url 'checkout:cart_item' %}">Carrinho</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'accounts:index' %}">Conta</a></li>
+			<li><a href="{% url 'logout' %}">Sair</a></li>
+			{% else %}
+			<li><a href="{% url 'login' %}">Entrar</a></li>
+			<li><a href="{% url 'accounts:register' %}">Registro</a></li>
+			{% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container margin-top">
+		{% block messages %}
+		{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}">
+			{{ message }}
 		</div>
-	</header>
-	<!-- End Header Area -->
-
-{% block content %}{% endblock content %}
-
-	<!-- start footer Area -->
-	<footer class="footer-area section_gap">
-		<div class="container">
+		{% endfor %}
+		{% endblock %}
+		{% block container %}{% endblock %}
+		<footer>
 			<div class="row">
-				<div class="col-lg-3  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>Sobre</h6>
-						<p>
-							Somos a PartyouDesafio uma empresa nova no mercado brasileiro. Voltada à venda de produtos diversos
-							com o menor custo benefício. ;)
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-4  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-					</div>
-				</div>
-				<div class="col-lg-3  col-md-6 col-sm-6">
-
-				</div>
-				<div class="col-lg-2 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>Redes Sociais</h6>
-						<p>Let us be social</p>
-						<div class="footer-social d-flex align-items-right">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-dribbble"></i></a>
-							<a href="#"><i class="fa fa-behance"></i></a>
-						</div>
-					</div>
-				</div>
+			  <div class="col-lg-12">
+			    <ul class="list-unstyled">
+			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
+			      <li><a href="">Início</a></li>
+			      <li><a href="">Produtos</a></li>
+			      <li><a href="">Contato</a></li>
+			      <li><a href="">Termos e Privacidade</a></li>
+			    </ul>
+			  </div>
 			</div>
-			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-				<p class="footer-text m-0">{% now 'Y' %} - PartyouDesafio. Todos os diretos reservados. Site criado com <i class="fa fa-heart-o" aria-hidden="true"></i> por <a href="https://github.com/alisonamerico" target="_blank">Alison Américo</a>.</p>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
-
-	<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
-	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-	<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
-	<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-	<script src="{% static 'js/jquery.sticky.js' %}"></script>
-	<script src="{% static 'js/nouislider.min.js' %}"></script>
-	<script src="{% static 'js/countdown.js' %}"></script>
-	<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
-	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="{% static 'js/gmaps.min.js' %}"></script>
-	<script src="{% static 'js/main.js' %}"></script>
+		</footer>
+	</div>
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'assets/bootstrap.min.js' %}"></script>
+	{% block scripts %}{% endblock %}
 </body>
-
 </html>
