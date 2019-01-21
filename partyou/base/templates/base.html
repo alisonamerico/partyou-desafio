@@ -1,86 +1,83 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>{% block title %}PartyouDesafio{% endblock %}</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="stylesheet" href="{% static 'assets/bootstrap.min.css' %}" media="screen" />
-	<link rel="stylesheet" href="{% static 'assets/custom.min.css' %}" media="screen" />
-	<link rel="stylesheet" href="{% static 'assets/extra.css' %}" media="screen" />
-</head>
-<body>
-<div class="navbar navbar-default navbar-fixed-top">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}PartyouDesafio{% endblock title %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/one-page-wonder.min.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
       <div class="container">
-        <div class="navbar-header">
-          <a href="{% url 'base:home' %}" class="navbar-brand">PartyouDesafio</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="{% url 'catalog:product_list' %}">Produtos</a>
+        <a class="navbar-brand" href="{% url 'base:home' %}">PartyouDesafio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'produtos:index' %}">Produtos</a>
             </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'catalog:product_list' %}" id="download">Categorias <span class="caret"></span></a>
-              <ul class="dropdown-menu" aria-labelledby="download">
-				{% for category in categories %}
-				<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
-				{% endfor %}
-              </ul>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'base:contato' %}">Contato</a>
             </li>
-			<li>
-				<a href="{% url 'contact' %}">Contato</a>
-			</li>
           </ul>
-		  <form class="navbar-form navbar-left" role="search" action="{% url 'catalog:product_list' %}">
-	        <div class="form-group">
-	          <input name="q" type="text" class="form-control" placeholder="Pesquisar..." />
-	        </div>
-	      </form>
-          <ul class="nav navbar-nav navbar-right">
-			  <li><a href="{% url 'checkout:cart_item' %}">Carrinho</a></li>
-			{% if user.is_authenticated %}
-			<li><a href="{% url 'accounts:index' %}">Conta</a></li>
-			<li><a href="{% url 'logout' %}">Sair</a></li>
-			{% else %}
-			<li><a href="{% url 'login' %}">Entrar</a></li>
-			<li><a href="{% url 'accounts:register' %}">Registro</a></li>
-			{% endif %}
-          </ul>
+           <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+            {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'logout' %}">Sair</a>
+               </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'base:registro' %}">Registrar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Entrar</a>
+            {% endif %}
+               </li>
+            </ul>
         </div>
       </div>
-    </div>
-    <div class="container margin-top">
-		{% block messages %}
-		{% for message in messages %}
-		<div class="alert alert-{{ message.tags }}">
-			{{ message }}
-		</div>
-		{% endfor %}
-		{% endblock %}
-		{% block container %}{% endblock %}
-		<footer>
-			<div class="row">
-			  <div class="col-lg-12">
-			    <ul class="list-unstyled">
-			      <li class="pull-right"><a href="#top">Voltar ao Topo</a></li>
-			      <li><a href="">Início</a></li>
-			      <li><a href="">Produtos</a></li>
-			      <li><a href="">Contato</a></li>
-			      <li><a href="">Termos e Privacidade</a></li>
-			    </ul>
-			  </div>
-			</div>
-		</footer>
-	</div>
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="{% static 'assets/bootstrap.min.js' %}"></script>
-	{% block scripts %}{% endblock %}
-</body>
+    </nav>
+
+<body>
+
+{% block content %}{% endblock content %}
+
+<br><br><br><br>
+
+{# Footer #}
+
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">{% now  'Y' %} - PartyouDesafio - Todos direitos reservados.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
 </html>
