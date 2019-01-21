@@ -1,11 +1,10 @@
 from django.urls import path
 
-from partyou.base.views import home, contato
+from partyou.base import views
 
 app_name = 'base'
 urlpatterns = [
-    path('', home, name='home'),
-    path('contato/', contato, name='contato'),
-
+    path('', views.home, name='home'),
+    path('contato/', views.contato, name='contato'),
+    path('registro/', views.registro, name='registro'),
 ]
-

@@ -33,6 +33,9 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+# auth
+LOGIN_REDIRECT_URL = LOGOUT_REDIRECT_URL = 'base:home'
+
 AUTH_USER_MODEL = 'base.User'
 
 # Application definition
@@ -45,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'collectfast',
     'django.contrib.staticfiles',
-    'accounts',
     'partyou.base',
+    'partyou.produtos',
 
 ]
 
@@ -135,7 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-# Configuração de ambiente de desenvolvimento (arquivos estáticos e media)
+# Configuração de ambiente de desenvolvimento (arquivos estáticos e mediafiles)
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -173,7 +176,7 @@ if AWS_ACCESS_KEY_ID:
 
     # Upload Media Folder
     DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'  # pragma: no cover
-    DEFAULT_S3_PATH = 'media'  # pragma: no cover
+    DEFAULT_S3_PATH = 'mediafiles'  # pragma: no cover
     MEDIA_ROOT = f'/{DEFAULT_S3_PATH}/'  # pragma: no cover
     MEDIA_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{DEFAULT_S3_PATH}/'  # pragma: no cover
 
