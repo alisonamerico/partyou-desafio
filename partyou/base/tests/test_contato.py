@@ -15,7 +15,7 @@ def test_status_code(resp):
 
 
 def test_title(resp):
-    assert_contains(resp, '<title>Contato</title>')
+    assert_contains(resp, 'h1 class="mt-4 mb-3">Contato</h1>')
 
 
 def test_home_link(resp):
@@ -24,12 +24,11 @@ def test_home_link(resp):
 
 @pytest.mark.parametrize(
     'content', [
-        'Brasil, Pernambuco',
-        'Areias',
-        '+55(081) 9 8888 7777',
-        'Seg. à Sext. - 09:00 às 18:00hs',
-        'suporte@suporte.com',
-        'Envie-nos sua mensagem a qualquer momento!',
+        'Rua Jataúba 161',
+        'Recife, PE',
+        '(81) 9 8888-8888',
+        'name@example.com',
+        'Segunda - Sexta: 9:00 às 17:00',
     ]
 )
 def test_contact_content(resp, content):
