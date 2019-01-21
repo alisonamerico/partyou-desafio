@@ -10,6 +10,5 @@ class Produto(models.Model):
     def __str__(self):
         return self.titulo
 
-    @property
     def __repr__(self):
         return f'Produto(titulo={self.titulo!r}, preco={self.preco!r}, descricao={self.descricao!r}'
