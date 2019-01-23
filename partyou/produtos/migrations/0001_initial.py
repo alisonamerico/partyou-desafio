@@ -43,11 +43,5 @@ class Migration(migrations.Migration):  # pragma: no cover
                 'verbose_name_plural': 'Produtos',
                 'ordering': ['titulo'],
             },
-=======
-                ('preco', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('descricao', models.TextField()),
-                ('foto', models.ImageField(default='http://foo', upload_to='produtos/')),
-            ],
->>>>>>> Configurado catálago de produtos e seus testes
         ),
-    ]
+]
