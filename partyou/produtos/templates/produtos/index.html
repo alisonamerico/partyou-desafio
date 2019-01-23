@@ -24,13 +24,14 @@
                     <p class="card-title">{{ produto.descricao }}</p>
 
                     <h6 class="card-subtitle mb-4 text-muted">{{ produto.preco }}</h6>
-                    <a href="#" class="btn btn-primary">Detalhe</a>
+                    <!--<a href="#" class="btn btn-primary">Detalhe</a>-->
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-success" role="button">Detalhes</a>
                 </div>
             </div>
         </div>
     </div>
-    {% endfor %}
 
-   <br>
+    {% endfor %}
 </div>
+
 {% endblock content %}
