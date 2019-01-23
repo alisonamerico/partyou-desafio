@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('preco', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('descricao', models.TextField()),
                 ('foto', models.ImageField(default='http://foo', upload_to='produtos/')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='produtos.Category', verbose_name='Categoria')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='produtos.Category', verbose_name='Categoria')),  # noqa
             ],
             options={
                 'verbose_name': 'Produto',

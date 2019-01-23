@@ -58,7 +58,7 @@ class CategoryListView(generic.ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        return Product.objects.filter(category__slug=self.kwargs['slug'])
+        return Produto.objects.filter(category__slug=self.kwargs['slug'])
 
     def get_context_data(self, **kwargs):
         context = super(CategoryListView, self).get_context_data(**kwargs)
@@ -70,7 +70,7 @@ category = CategoryListView.as_view()
 
 
 def product(request, slug):
-    product = Product.objects.get(slug=slug)
+    product = Produto.objects.get(slug=slug)
     context = {
         'product': product
     }
