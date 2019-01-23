@@ -38,12 +38,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 
-from .models import Produto, Category
+from .models import Product, Category
 
 
 class ProductListView(generic.ListView):
 
-    model = Produto
+    model = Product
     template_name = 'produtos/product_list.html'
     context_object_name = 'products'
     paginate_by = 3
@@ -59,7 +59,7 @@ class CategoryListView(generic.ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        return Produto.objects.filter(category__slug=self.kwargs['slug'])  # pragma: no cover
+        return Product.objects.filter(category__slug=self.kwargs['slug'])  # pragma: no cover
 
     def get_context_data(self, **kwargs):
         context = super(CategoryListView, self).get_context_data(**kwargs)  # pragma: no cover
@@ -71,7 +71,7 @@ category = CategoryListView.as_view()
 
 
 def product(request, slug):
-    product = Produto.objects.get(slug=slug)  # pragma: no cover
+    product = Product.objects.get(slug=slug)  # pragma: no cover
     context = {  # pragma: no cover
         'product': product  # pragma: no cover
     }

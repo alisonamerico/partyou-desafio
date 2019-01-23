@@ -38,6 +38,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'produtos:product_list' %}">Produtos</a>
             </li>
+            <!--<li class="nav-item dropdown">-->
+                <!--<a class="nav-link dropdown-toggle" href="{% url 'produtos:product_list' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                    <!--Categorias-->
+                <!--</a>-->
+                <!--<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                    <!--{% for category in categories %}-->
+				        <!--<li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>-->
+                    <!--{% endfor %}-->
+                    <!--&lt;!&ndash;<a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="dropdown-divider"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
+                <!--</div>-->
+             <!--</li>-->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'base:contato' %}">Contato</a>
             </li>
@@ -78,7 +91,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
   </body>
 
 </html>
