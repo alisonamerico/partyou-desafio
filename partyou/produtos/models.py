@@ -16,10 +16,10 @@ class Category(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return self.name
+        return self.name  # noqa
 
     def get_absolute_url(self):
-        return reverse('produtos:category', kwargs={'slug': self.slug})
+        return reverse('produtos:category', kwargs={'slug': self.slug})  # pragma: no cover
 
 
 class Produto(models.Model):
@@ -36,10 +36,10 @@ class Produto(models.Model):
         ordering = ['titulo']
 
     def __str__(self):
-        return self.titulo
+        return self.titulo  # pragma: no cover
 
     def __repr__(self):
-        return f'Produto(titulo={self.titulo!r}, preco={self.preco!r}, descricao={self.descricao!r}'
+        return f'Produto(titulo={self.titulo!r}, preco={self.preco!r}, descricao={self.descricao!r}'  # pragma: no cover
 
     def get_absolute_url(self):
-        return reverse('produtos:product', kwargs={'slug': self.slug})
+        return reverse('produtos:product', kwargs={'slug': self.slug})  # pragma: no cover
