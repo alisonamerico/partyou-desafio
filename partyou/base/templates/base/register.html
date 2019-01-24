@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<br><br>
+<!--================Home Banner Area =================-->
+<section class="banner_area">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+        <div class="container">
+            <div class="banner_content text-center">
+                <h2>REGISTRAR</h2>
+                <div class="page_link">
+                    <a href="{% url 'base:home' %}">Home</a>
+                    <a href="{% url 'base:registro' %}">REGISTRAR</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Home Banner Area =================-->
+
+<br><br><br><br>
 <div class="container">
-    <h1 class="mt-4 mb-3">Registrar</h1>
-    <ol class="breadcrumb">
-       <li class="breadcrumb-item">
-         <a href="/">Home</a>
-       </li>
-       <li class="breadcrumb-item active">Registrar</li>
-    </ol>
+
   <form method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -27,7 +39,7 @@
       <button type="submit" class="btn btn-primary">Registrar</button>
   </form>
 </div>
-<br>
+<br><br><br><br>
 {% endblock content %}
 
 

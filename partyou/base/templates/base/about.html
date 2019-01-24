@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>Sobre</h2>
+						<div class="page_link">
+							<a href="{% url 'base:home' %}">Home</a>
+							<a href="{% url 'base:sobre' %}">SOBRE</a>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Made Life Area =================-->
+        <section class="made_life_area p_120">
+        	<div class="container">
+        		<div class="made_life_inner">
+
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<div class="row made_life_text">
+								<div class="col-lg-6">
+									<div class="left_side_text">
+										<h3>We’ve made a life <br />that will change you</h3>
+										<h6>We are here to listen from you deliver exellence</h6>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="chart_img">
+										<img class="img-fluid" src="img/chart.jpg" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							<div class="row made_life_text">
+								<div class="col-lg-6">
+									<div class="left_side_text">
+										<h3>We’ve made a life <br />that will change you</h3>
+										<h6>We are here to listen from you deliver exellence</h6>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="chart_img">
+										<img class="img-fluid" src="{% static 'img/chart.jpg' %}" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+							<div class="row made_life_text">
+								<div class="col-lg-6">
+									<div class="left_side_text">
+										<h3>We’ve made a life <br />that will change you</h3>
+										<h6>We are here to listen from you deliver exellence</h6>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="chart_img">
+										<img class="img-fluid" src="img/chart.jpg" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="edge" role="tabpanel" aria-labelledby="edge-tab">
+							<div class="row made_life_text">
+								<div class="col-lg-6">
+									<div class="left_side_text">
+										<h3>We’ve made a life <br />that will change you</h3>
+										<h6>We are here to listen from you deliver exellence</h6>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="chart_img">
+										<img class="img-fluid" src="img/chart.jpg" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+        		</div>
+        	</div>
+        </section>
+{% endblock content %}
+

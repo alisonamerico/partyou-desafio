@@ -24,11 +24,12 @@ def test_home_link(resp):
 
 @pytest.mark.parametrize(
     'content', [
-        'Rua Jataúba 161',
-        'Recife, PE',
-        '(81) 9 8888-8888',
-        'name@example.com',
+        'Brasil, Pernambuco',
+        'Recife - Caçote',
+        '+55 (81) 9 8888-8888',
         'Segunda - Sexta: 9:00 às 17:00',
+        'partyoudesafio@contato.com',
+        'Envie-nos sua mensagem a qualquer momento!',
     ]
 )
 def test_contact_content(resp, content):

@@ -1,95 +1,120 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
 
-{# Page Content #}
-<div class="container">
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+            	<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+				<div class="container">
+					<div class="banner_content text-center">
+						<h2>CONTATO</h2>
+						<div class="page_link">
+							<a href="{% url 'base:home' %}">Home</a>
+							<a href="{% url 'base:contato' %}">CONTATO</a>
+						</div>
 
-  {# Page Heading/Breadcrumbs #}
-  <br><br>
-  <h1 class="mt-4 mb-3">Contato</h1>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
 
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="/">Home</a>
-    </li>
-    <li class="breadcrumb-item active">Contato</li>
-  </ol>
 
-  {# Content Row #}
-  <div class="row">
-    {# Map Column #}
-    <div class="col-lg-8 mb-4">
-      {# Embedded Google Map #}
+        <!--================Contact Area =================-->
+        <section class="contact_area p_120">
+            <div class="container">
+                <div id="mapBox" class="mapBox" 
+                    data-lat="40.701083" 
+                    data-lon="-74.1522848" 
+                    data-zoom="13" 
+                    data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
+                    data-mlat="40.701083"
+                    data-mlon="-74.1522848">
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="contact_info">
+                            <div class="info_item">
+                                <i class="lnr lnr-home"></i>
+                                <h6>Brasil, Pernambuco</h6>
+                                <p>Recife - Caçote</p>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-phone-handset"></i>
+                                <h6><a href="#">+55 (81) 9 8888-8888</a></h6>
+                                <p>Segunda - Sexta: 9:00 às 17:00</p>
+                            </div>
+                            <div class="info_item">
+                                <i class="lnr lnr-envelope"></i>
+                                <h6><a href="#">partyoudesafio@contato.com</a></h6>
+                                <p>Envie-nos sua mensagem a qualquer momento!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Digite seu nome">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Insira o endereço de e-mail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Digite o assunto">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Digite a mensagem"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-right">
+                                <button type="submit" value="submit" class="btn submit_btn">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================Contact Area =================-->
+        
 
-      <iframe width="100%" height="400px" id="gmap_canvas" src="https://maps.google.com/maps?q=rua%20jatauba%20161&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-
-    </div>
-    {# Contact Details Column #}
-    <div class="col-lg-4 mb-4">
-      <h3>Detalhes do Contato</h3>
-      <p>
-        Rua Jataúba 161
-        <br>Recife, PE
-        <br>
-      </p>
-      <p>
-        <abbr title="Phone">Fone</abbr>: (81) 9 8888-8888
-      </p>
-      <p>
-        <abbr title="Email">Email</abbr>:
-        <a href="mailto:name@example.com">name@example.com
-        </a>
-      </p>
-      <p>
-        <abbr title="Hours">Hora</abbr>: Segunda - Sexta: 9:00 às 17:00
-      </p>
-    </div>
-  </div>
-  {# /.row #}
-
-  {# Contact Form #}
-  {# In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. #}
-  <div class="row">
-    <div class="col-lg-8 mb-4">
-      <h3>Envie-nos uma mensagem</h3>
-      <form name="sentMessage" id="contactForm" novalidate>
-        <div class="control-group form-group">
-          <div class="controls">
-            <label>Nome completo:</label>
-            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-            <p class="help-block"></p>
-          </div>
+        <!--================Contact Success and Error message Area =================-->
+        <div id="success" class="modal modal-message fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-close"></i>
+                        </button>
+                        <h2>Thank you</h2>
+                        <p>Your message is successfully sent...</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="control-group form-group">
-          <div class="controls">
-            <label>Número de telefone:</label>
-            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-          </div>
-        </div>
-        <div class="control-group form-group">
-          <div class="controls">
-            <label>Email:</label>
-            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-          </div>
-        </div>
-        <div class="control-group form-group">
-          <div class="controls">
-            <label>Mensagem:</label>
-            <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-          </div>
-        </div>
-        <div id="success"></div>
-        {# For success/fail messages #}
-        <button type="submit" class="btn btn-primary" id="sendMessageButton">Enviar mensagem</button>
-      </form>
-    </div>
 
-  </div>
-  {# /.row #}
+        <!-- Modals error -->
 
-</div>
-{# container #}
+        <div id="error" class="modal modal-message fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-close"></i>
+                        </button>
+                        <h2>Sorry !</h2>
+                        <p> Something went wrong </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--================End Contact Success and Error message Area =================-->
+        
+        
+        
+        
+
 {% endblock content %}
