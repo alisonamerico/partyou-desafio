@@ -45,12 +45,7 @@ class ProductListView(generic.ListView):
 
     model = Product
     template_name = 'produtos/product_list.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['products'] = Product.objects.all()
-        return context
-
+    context_object_name = 'products'
     paginate_by = 3
 
 
