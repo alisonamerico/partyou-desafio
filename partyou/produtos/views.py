@@ -36,7 +36,7 @@
 
 
 from django.shortcuts import render, get_object_or_404
-# from django.template import context
+
 from django.views import generic
 
 from .models import Product, Category

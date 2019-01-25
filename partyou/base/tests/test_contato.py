@@ -15,7 +15,7 @@ def test_status_code(resp):
 
 
 def test_title(resp):
-    assert_contains(resp, 'h1 class="mt-4 mb-3">Contato</h1>')
+    assert_contains(resp, 'CONTATO')
 
 
 def test_home_link(resp):
