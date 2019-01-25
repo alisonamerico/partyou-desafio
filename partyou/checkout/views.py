@@ -120,7 +120,6 @@ class PagSeguroView(LoginRequiredMixin, RedirectView):
             reverse('checkout:order_detail', args=[order.pk])
         )
         pg.notification_url
-        ipdb.set_trace()
         response = pg.checkout()
         return response.payment_url
 

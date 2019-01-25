@@ -47,11 +47,11 @@ class OrderManager(models.Manager):
     def create_order(self, user, cart_items):
         order = self.create(user=user)
         for cart_item in cart_items:
-            order_item = OrderItem.objects.create(
+            order_item = OrderItem.objects.create(  # pragma: no cover
                 order=order, quantity=cart_item.quantity, product=cart_item.product,
                 price=cart_item.price
             )
-        return order
+        return order, order_item
 
 
 class Order(models.Model):
@@ -101,28 +101,28 @@ class Order(models.Model):
             )
         )
         return aggregate_queryset['total']
-
-    def pagseguro(self):
-        pg = PagSeguro(
-            email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
-            config={'sandbox': settings.PAGSEGURO_SANDBOX}
-        )
-        pg.sender = {
-            'email': self.user.email
-        }
-        pg.reference_prefix = ''
-        pg.shipping = None
-        pg.reference = self.pk
-        for item in self.items.all():
-            pg.items.append(
-                {
-                    'id': item.product.pk,
-                    'description': item.product.name,
-                    'quantity': item.quantity,
-                    'amount': '%.2f' % item.price
-                }
-            )
-        return pg
+    #
+    # def pagseguro(self):
+    #     pg = PagSeguro(
+    #         email=settings.PAGSEGURO_EMAIL, token=settings.PAGSEGURO_TOKEN,
+    #         config={'sandbox': settings.PAGSEGURO_SANDBOX}
+    #     )
+    #     pg.sender = {
+    #         'email': self.user.email
+    #     }
+    #     pg.reference_prefix = ''
+    #     pg.shipping = None
+    #     pg.reference = self.pk
+    #     for item in self.items.all():
+    #         pg.items.append(
+    #             {
+    #                 'id': item.product.pk,
+    #                 'description': item.product.name,
+    #                 'quantity': item.quantity,
+    #                 'amount': '%.2f' % item.price
+    #             }
+    #         )
+    #     return pg
 
 
 class OrderItem(models.Model):

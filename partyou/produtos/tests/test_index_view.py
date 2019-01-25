@@ -4,13 +4,13 @@ import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
 
-from partyou.django_assertions import assert_contains
-from partyou.produtos.models import Produto
+# from partyou.django_assertions import assert_contains
+from partyou.produtos.models import Product
 
 
-def test_app_link_in_home(client):
-    response = client.get('/')
-    assert_contains(response, reverse('produtos:product_list'))
+# def test_app_link_in_home(client):
+#     response = client.get('/')
+#     assert_contains(response, reverse('produtos:product_list'))
 
 
 IMAGE_PATH = path.dirname(__file__)
@@ -21,7 +21,7 @@ IMAGE_PATH = path.join(IMAGE_PATH, '2.jpg')
 def produtos(db):
     image = SimpleUploadedFile(
         name='2.jpg', content=open(IMAGE_PATH, 'rb').read(), content_type='image/jpeg')
-    produto = Produto(
+    produto = Product(
         titulo='Camisa Manga Longa Vermelha',
         preco='190',
         foto=image,
