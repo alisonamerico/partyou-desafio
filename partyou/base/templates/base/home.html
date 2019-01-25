@@ -21,8 +21,20 @@
 				</div>
             </div>
         </section>
-        <!--================End Home Banner Area =================-->
+		<!--================End Home Banner Area =================-->
+		
         
+		<!-- End Produtos Home Page -->
+		<div class="container">
+			{% for produto in produtos %}
+			<h1>{{ produto.name }}</h1>
+			<p>{{ produto.category }}</p>
+			<p>{{ produto.price }}</p>
+			{% endfor %}
+		</div>
+		<!-- Produtos Home Page -->
+
+
         <!--================Work Area =================-->
         <section class="work_area p_120">
         	<div class="container">

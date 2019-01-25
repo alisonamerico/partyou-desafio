@@ -2,12 +2,15 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 
 from partyou.base.forms import RegisterForm
-from partyou.produtos.models import Category
+from partyou.produtos.models import Category, Product
 
 
 def home(request):
     categories = Category.objects.all()
-    return render(request, 'base/home.html', {'categories': categories})
+    produtos = Product.objects.all()
+    context = {'categories': categories,
+               'produtos': produtos,}
+    return render(request, 'base/home.html', context)
 
 
 def about(request):
