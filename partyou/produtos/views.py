@@ -36,6 +36,7 @@
 
 
 from django.shortcuts import render, get_object_or_404
+# from django.template import context
 from django.views import generic
 
 from .models import Product, Category
@@ -45,7 +46,11 @@ class ProductListView(generic.ListView):
 
     model = Product
     template_name = 'produtos/product_list.html'
-    context_object_name = 'products'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = self.products
+        return context
     paginate_by = 3
 
 
