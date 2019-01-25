@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'partyou.base',
     'partyou.produtos',
+    'partyou.checkout',
 
 ]
 
