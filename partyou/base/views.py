@@ -1,33 +1,26 @@
-from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
+# from django.contrib.auth import login, authenticate
 
-from partyou.base.forms import RegisterForm
-from partyou.produtos.models import Category
+from django.shortcuts import render
 
 
 def home(request):
-    categories = Category.objects.all()
-    return render(request, 'base/home.html', {'categories': categories})
+    return render(request, 'base/home.html')
 
 
-def about(request):
-    return render(request, 'base/about.html')
+def contact(request):
+    return render(request, 'base/contact.html')
 
 
-def contato(request):
-    return render(request, 'base/contact_detail.html')
-
-
-def registro(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
-    else:
-        form = RegisterForm()
-    return render(request, 'base/register.html', {'form': form})
+# def registro(request):
+#     if request.method == 'POST':
+#         form = RegisterForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             username = form.cleaned_data.get('username')
+#             raw_password = form.cleaned_data.get('password1')
+#             user = authenticate(username=username, password=raw_password)
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = RegisterForm()
+#     return render(request, 'base/register.html', {'form': form})
