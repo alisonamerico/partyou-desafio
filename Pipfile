@@ -20,6 +20,7 @@ collectfast = "*"
 django-debug-toolbar = "*"
 sentry-sdk = "*"
 pillow = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.7"

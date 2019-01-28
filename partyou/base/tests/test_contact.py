@@ -6,7 +6,7 @@ from partyou.django_assertions import assert_contains
 
 @pytest.fixture
 def resp(client, db):
-    resp = client.get(reverse('base:home'))
+    resp = client.get(reverse('base:contact'))
     return resp
 
 
@@ -15,14 +15,20 @@ def test_status_code(resp):
 
 
 def test_title(resp):
-    assert_contains(resp, 'PartyouDesafio')
+    assert_contains(resp, 'Contato | PartyouDesafio')
+
+
+def test_home_link(resp):
+    assert_contains(resp, f'href="{reverse("base:contact")}">Contato</a>')
 
 
 @pytest.mark.parametrize(
     'content', [
-        'PartyouDesafio',
-        'Desafie-se ao novo!',
+        'Fale conosco',
+        'Nome',
+        'E-mail',
+        'Mensagem',
     ]
 )
-def test_home_content(resp, content):
+def test_contact_content(resp, content):
     assert_contains(resp, content)
