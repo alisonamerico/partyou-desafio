@@ -5,7 +5,8 @@ from partyou.base import views
 app_name = 'base'
 urlpatterns = [
     path('', views.home, name='home'),
-    path('contato/', views.contato, name='contato'),
-    path('registro/', views.registro, name='registro'),
-    path('sobre/', views.about, name='sobre'),
+    path('contato/', views.contact, name='contact'),
+    # path('produto/', views.product, name='product'),
+    # path('registro/', views.registro, name='registro'),
+
 ]

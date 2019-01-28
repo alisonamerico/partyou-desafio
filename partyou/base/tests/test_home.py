@@ -15,20 +15,17 @@
 #
 #
 # def test_title(resp):
-#     assert_contains(resp, '<title>PartyouDesafio</title>')
+#     assert_contains(resp, '<title>{% block title %}PartyouDesafio{% endblock %}</title>')
 #
 #
 # def test_home_link(resp):
-#     assert_contains(resp, f'href="{reverse("base:home")}">PARTYOUDESAFIO</a>')
+#     assert_contains(resp, f'href="{reverse("base:home")}">PartyouDesafio</a>')
 #
 #
 # @pytest.mark.parametrize(
 #     'content', [
-#         'One Page Wonder',
-#         'Will Rock Your Socks Off',
-#         'For those about to rock...',
-#         'We salute you!',
-#         'Let there be rock!',
+#         'PartyouDesafio',
+#         'Desafie-se ao novo!',
 #     ]
 # )
 # def test_home_content(resp, content):

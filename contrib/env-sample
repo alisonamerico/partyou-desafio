@@ -1,6 +1,6 @@
 DEBUG=True
 SECRET_KEY=defina sua chave secreta
-ALLOWED_HOSTS=localhost, 127.0.0.1
+ALLOWED_HOSTS=127.0.0.1, localhost
 DATABASE_URL=postgres://postgres:postgres@localhost/testdb
 # Configurações do AWS
 AWS_ACCESS_KEY_ID=

@@ -49,8 +49,7 @@ INSTALLED_APPS = [
     'collectfast',
     'django.contrib.staticfiles',
     'partyou.base',
-    'partyou.produtos',
-    'partyou.checkout',
+    'partyou.catalog',
 
 ]
 
@@ -77,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'partyou.catalog.context_processors.categories',
             ],
         },
     },
