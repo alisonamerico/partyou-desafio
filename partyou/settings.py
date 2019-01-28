@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'collectfast',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'partyou.base',
     'partyou.catalog',
 

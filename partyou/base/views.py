@@ -1,6 +1,7 @@
 # from django.contrib.auth import login, authenticate
 
 from django.shortcuts import render
+from .forms import ContactForm
 
 
 def home(request):
@@ -8,7 +9,14 @@ def home(request):
 
 
 def contact(request):
-    return render(request, 'base/contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+    else:
+        form = ContactForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'base/contact.html', context)
 
 
 # def registro(request):
