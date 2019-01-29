@@ -2,10 +2,15 @@
 
 from django.shortcuts import render
 from .forms import ContactForm
+from django.views.generic import TemplateView
 
 
-def home(request):
-    return render(request, 'base/home.html')
+class HomeView(TemplateView):
+
+    template_name = 'base/home.html'
+
+
+home = HomeView.as_view()
 
 
 def contact(request):
