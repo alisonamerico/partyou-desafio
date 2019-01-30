@@ -18,6 +18,7 @@ from decouple import config, Csv
 from functools import partial
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from django.contrib.messages import constants as messages_constants
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,6 +36,17 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # auth
 LOGIN_REDIRECT_URL = LOGOUT_REDIRECT_URL = 'base:home'
+
+
+# Messages
+MESSAGE_TAGS = {
+    messages_constants.DEBUG: 'debug',
+    messages_constants.INFO: 'info',
+    messages_constants.SUCCESS: 'success',
+    messages_constants.WARNING: 'warning',
+    messages_constants.ERROR: 'danger',
+}
+
 
 AUTH_USER_MODEL = 'base.User'
 
