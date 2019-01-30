@@ -1,6 +1,6 @@
 # from django.contrib.auth import login, authenticate
 # from django.contrib.auth.views import login as auth_login
-
+from django.contrib import messages
 from django.shortcuts import render
 from .forms import ContactForm
 
@@ -82,12 +82,16 @@ update_password = UpdatePasswordView.as_view()
 
 
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-    else:
-        form = ContactForm()
+    success = False
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.send_email()
+        success = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formulário Inválido')
     context = {
-        'form': form
+        'form': form,
+        'success': success
     }
     return render(request, 'base/contact.html', context)
 
