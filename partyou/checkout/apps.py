@@ -1,5 +1,5 @@
-from django.apps import AppConfig
+from django.apps import AppConfig  # pragma: no cover
 
 
-class CheckoutConfig(AppConfig):
-    name = 'checkout'
+class CheckoutConfig(AppConfig):  # pragma: no cover
+    name = 'checkout'  # pragma: no cover

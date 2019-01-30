@@ -17,4 +17,4 @@ class CartItem(models.Model):
         verbose_name_plural = 'Itens dos Carrinhos'
 
     def __str__(self):
-        return '{} [{}]'.format(self.product, self.quantity)
+        return '{} [{}]'.format(self.product, self.quantity)  # pragma: no cover

@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('cart_key', models.CharField(db_index=True, max_length=40, verbose_name='Chave do Carrinho')),
                 ('quantity', models.PositiveIntegerField(default=1, verbose_name='Quantidade')),
                 ('price', models.DecimalField(decimal_places=2, max_digits=8, verbose_name='Preço')),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalog.Product', verbose_name='Produto')),
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='catalog.Product', verbose_name='Produto')),  # noqa
             ],
             options={
                 'verbose_name': 'Item do Carrinho',
