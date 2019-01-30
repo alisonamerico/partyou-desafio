@@ -1,45 +1,56 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
+{% block title %}Registrar | {{ block.super }}{% endblock %}
+
 {% block content %}
-<!--================Home Banner Area =================-->
-<section class="banner_area">
-    <div class="banner_inner d-flex align-items-center">
-        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-        <div class="container">
-            <div class="banner_content text-center">
-                <h2>REGISTRAR</h2>
-                <div class="page_link">
-                    <a href="{% url 'base:home' %}">Home</a>
-                    <a href="{% url 'base:registro' %}">REGISTRAR</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-<!--================End Home Banner Area =================-->
-
-<br><br><br><br>
-<div class="container">
-
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        {% if form.errors %}
+          <p class="text-danger">Seu login e senha não conferem. Tente Novamente.</p>
         {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-      <button type="submit" class="btn btn-primary">Registrar</button>
-  </form>
+
+        {% if next %}
+          {% if user.is_authenticated %}
+            <p>Você não tem permissão para ver essa página, por favor faça login com uma conta que tenh e essa
+              permissão.</p>
+          {% else %}
+            <p>Faça login para ver a página.</p>
+          {% endif %}
+        {% endif %}
+        <div class="page-header">
+            <h1>Registro</h1>
+        </div>
+        <form class="form-horizontal" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <fieldset>
+                <div class="form-group">
+                  <label for="{{ form.email.id_for_label }}" class="col-md-3 control-label">Email</label>
+                  <div class="col-md-9">
+                    <input type="text" name="{{ form.email.html_name }}" class="form-control" value="{{ field.value }}" autofocus="" maxlength="{{ form.email.max_length }}" required="required" id="{{ form.email.id_for_label }}" placeholder="Email"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="{{ form.password.id_for_label }}" class="col-md-3 control-label">Senha</label>
+                  <div class="col-md-9">
+                    <input type="password" class="form-control" id="id_password1" placeholder="Senha" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="{{ form.password.id_for_label }}" class="col-md-3 control-label">Confirme a senha</label>
+                  <div class="col-md-9">
+                    <input type="password" class="form-control" id="id_password2" placeholder="Confirme a senha" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-9 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                  </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </div>
-<br><br><br><br>
 {% endblock content %}
-
-

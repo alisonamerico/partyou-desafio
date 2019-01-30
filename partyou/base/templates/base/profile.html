@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Minha Conta | {{ block.super }}{% endblock %}
+
+{% block content %}
+<br>
+<div class="container margin-top">
+    <ol class="breadcrumb">
+      <li><a href="#">Início</a></li>
+      <li class="active">Minha Conta</li>
+    </ol>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-group">
+              <a href="#" class="list-group-item active">Minha Conta</a>
+              <a href="{% url 'base:update_user' %}" class="list-group-item">Alterar Dados</a>
+              <a href="{% url 'base:update_password' %}" class="list-group-item">Alterar Senha</a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            {% block update_user_content %}
+                <h2>Bem Vindo {{ user }}</h2>
+            {% endblock update_user_content%}
+        </div>
+    </div>
+</div>
+{% endblock content %}
