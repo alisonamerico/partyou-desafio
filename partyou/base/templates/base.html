@@ -38,7 +38,14 @@
 			</li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Minha Conta</a></li>
+              {% if user.is_authenticated %}
+
+            <li><a href="{% url 'logout' %}">Sair</a></li>
+            <li><a href="{% url 'base:profile' %}">Minha Conta</a></li>
+              {% else %}
+            <li><a href="{% url 'login' %}">Entrar</a></li>
+            <li><a href="{% url 'base:register' %}">Registro</a></li>
+              {% endif %}
           </ul>
         </div>
       </div>
