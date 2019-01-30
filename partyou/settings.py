@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'partyou.base',
     'partyou.catalog',
+    'partyou.checkout'
 
 ]
 
