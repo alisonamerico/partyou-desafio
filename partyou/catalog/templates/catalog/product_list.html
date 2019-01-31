@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         {% for product in products %}
-        {% include 'catalog/_product.html %}
+        {% include 'catalog/_product.html' %}
         {% endfor %}
     </div>
     {% pagination request paginator page_obj %}
