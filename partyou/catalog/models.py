@@ -5,7 +5,7 @@ from django.urls import reverse
 class Category(models.Model):
 
     name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100)
+    slug = models.SlugField('Identificador', max_length=100, unique=True)
 
     created = models.DateTimeField('Criado em', auto_now_add=True)
     modified = models.DateTimeField('Modificado em', auto_now=True)
@@ -25,7 +25,7 @@ class Category(models.Model):
 class Product(models.Model):
 
     name = models.CharField('Nome', max_length=100)
-    slug = models.SlugField('Identificador', max_length=100)
+    slug = models.SlugField('Identificador', max_length=100, unique=True)
     category = models.ForeignKey(Category, verbose_name='Categoria', on_delete=models.CASCADE)
     description = models.TextField('Descrição', blank=True)
     price = models.DecimalField('Preço', decimal_places=2, max_digits=8)

@@ -35,7 +35,7 @@ category = CategoryListView.as_view()
 
 
 def product(request, slug):
-    product = Product.objects.filter(slug=slug)  # pragma: no cover
+    product = Product.objects.get(slug=slug)  # pragma: no cover
     context = {  # pragma: no cover
         'product': product
     }
