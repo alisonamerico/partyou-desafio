@@ -1,56 +1,43 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% load widget_tweaks %}
 
-{% block title %}Registrar | {{ block.super }}{% endblock %}
+{% block title %}Registro | {{ block.super }}{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        {% if form.errors %}
-          <p class="text-danger">Seu login e senha não conferem. Tente Novamente.</p>
-        {% endif %}
-
-        {% if next %}
-          {% if user.is_authenticated %}
-            <p>Você não tem permissão para ver essa página, por favor faça login com uma conta que tenh e essa
-              permissão.</p>
-          {% else %}
-            <p>Faça login para ver a página.</p>
-          {% endif %}
-        {% endif %}
         <div class="page-header">
             <h1>Registro</h1>
         </div>
-        <form class="form-horizontal" method="post" action="{% url 'login' %}">
+        <form class="form-horizontal" method="post">
             {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}"/>
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+            {% endfor %}
             <fieldset>
-                <div class="form-group">
-                  <label for="{{ form.email.id_for_label }}" class="col-md-3 control-label">Email</label>
+                {% for field in form %}
+                <div class="form-group{% if field.errors %} has-error{% endif %}">
+                  <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
                   <div class="col-md-9">
-                    <input type="text" name="{{ form.email.html_name }}" class="form-control" value="{{ field.value }}" autofocus="" maxlength="{{ form.email.max_length }}" required="required" id="{{ form.email.id_for_label }}" placeholder="Email"/>
+                    {% render_field field class="form-control" %}
+                    {% for error in field.errors %}
+                    <span class="help-block">{{ error }}</span>
+                    {% endfor %}
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="{{ form.password.id_for_label }}" class="col-md-3 control-label">Senha</label>
-                  <div class="col-md-9">
-                    <input type="password" class="form-control" id="id_password1" placeholder="Senha" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="{{ form.password.id_for_label }}" class="col-md-3 control-label">Confirme a senha</label>
-                  <div class="col-md-9">
-                    <input type="password" class="form-control" id="id_password2" placeholder="Confirme a senha" />
-                  </div>
-                </div>
+                {% endfor %}
                 <div class="form-group">
                   <div class="col-md-9 col-md-offset-3">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
                   </div>
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
-{% endblock content %}
+{% endblock content%}
+
+

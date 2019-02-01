@@ -1,1 +1,6 @@
-# from django.contrib import admin
+from django.contrib import admin
+
+from .models import CartItem, Order, OrderItem
+
+
+admin.site.register([CartItem, Order, OrderItem])
