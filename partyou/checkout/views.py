@@ -1,4 +1,5 @@
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic import RedirectView, TemplateView
 from django.contrib import messages
@@ -6,7 +7,7 @@ from django.forms import modelformset_factory
 
 from partyou.catalog.models import Product
 
-from partyou.checkout.models import CartItem
+from partyou.checkout.models import CartItem, Order
 
 
 class CreateCartItemView(RedirectView):
@@ -67,3 +68,26 @@ class CartItemView(TemplateView):
 
 
 cart_item = CartItemView.as_view()
+
+
+class CheckoutView(LoginRequiredMixin, TemplateView):
+
+    template_name = 'checkout/checkout.html'
+
+    def get(self, request, *args, **kwargs):
+        session_key = request.session.session_key  # pragma: no cover
+        if session_key and CartItem.objects.filter(cart_key=session_key).exists():  # pragma: no cover
+            cart_items = CartItem.objects.filter(cart_key=session_key)  # pragma: no cover
+            order = Order.objects.create_order(  # pragma: no cover
+                user=request.user, cart_items=cart_items
+            )
+            cart_items.delete()  # pragma: no cover
+        else:
+            messages.info(request, 'Não há itens no carrinho de compras')  # pragma: no cover
+            return redirect('checkout:cart_item')  # pragma: no cover
+        response = super(CheckoutView, self).get(request, *args, **kwargs)  # pragma: no cover
+        response.context_data['order'] = order  # pragma: no cover
+        return response  # pragma: no cover
+
+
+checkout = CheckoutView.as_view()

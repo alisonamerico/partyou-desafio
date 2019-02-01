@@ -1,19 +1,18 @@
-# from django.contrib.auth import login, authenticate
-# from django.contrib.auth.views import login as auth_login
 from django.contrib import messages
-from django.shortcuts import render
-from .forms import ContactForm
+from django.shortcuts import render, redirect
+from .forms import ContactForm, RegisterForm
 
 from django.views.generic import (
-    CreateView, TemplateView, UpdateView, FormView
+    TemplateView, UpdateView, FormView
 )
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import PasswordChangeForm
 
+from django.contrib.auth import get_user_model, authenticate
 
-from partyou.base.models import User
-from .forms import UserCreationForm
+
+User = get_user_model()
 
 
 class HomeView(TemplateView):
@@ -38,17 +37,6 @@ class LoginView(LoginRequiredMixin, TemplateView):
 
 
 login = LoginView.as_view()
-
-
-class RegisterView(CreateView):
-
-    model = User
-    template_name = 'base/register.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-
-
-register = RegisterView.as_view()
 
 
 class UpdateUserView(LoginRequiredMixin, UpdateView):
@@ -81,6 +69,21 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 update_password = UpdatePasswordView.as_view()
 
 
+def register(request):
+    if request.method == 'POST':  # pragma: no cover
+        form = RegisterForm(request.POST)  # pragma: no cover
+        if form.is_valid():  # pragma: no cover
+            form.save()  # pragma: no cover
+            username = form.cleaned_data.get('username')  # pragma: no cover
+            raw_password = form.cleaned_data.get('password1')  # pragma: no cover
+            user = authenticate(username=username, password=raw_password)  # pragma: no cover
+            login(request, user)  # pragma: no cover
+            return redirect('base:home')  # pragma: no cover
+    else:
+        form = RegisterForm()  # pragma: no cover
+    return render(request, 'base/register.html', {'form': form})  # pragma: no cover
+
+
 def contact(request):
     success = False
     form = ContactForm(request.POST or None)
@@ -94,18 +97,3 @@ def contact(request):
         'success': success
     }
     return render(request, 'base/contact.html', context)
-
-
-# def register(request):
-#     if request.method == 'POST':
-#         form = RegisterForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect('home')
-#     else:
-#         form = RegisterForm()
-#     return render(request, 'base/register.html', {'form': form})
