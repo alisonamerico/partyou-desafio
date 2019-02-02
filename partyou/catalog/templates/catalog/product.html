@@ -11,9 +11,13 @@
 
 	<div class="row">
 	  <div class="col-sm-4">
-		  <a href="#" class="thumbnail">
-			  <img src="http://placehold.it/350x250" alt="" />
-		  </a>
+		  <a href="{{ product.get_absolute_url }}">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="" />
+            {% else %}
+            <img src="http://placehold.it/350x250" alt="" />
+            {% endif %}
+          </a>
 	  </div>
 	  <div class="col-sm-8">
 		  {{ product.description|linebreaks }}
