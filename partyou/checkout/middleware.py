@@ -6,7 +6,7 @@ def cart_item_middleware(get_response):
         session_key = request.session.session_key
         response = get_response(request)
         if session_key != request.session.session_key and request.session.session_key:
-            CartItem.objects.filter(cart_key=session_key).update(
+            CartItem.objects.filter(cart_key=session_key).update(  # pragma: no cover
                 cart_key=request.session.session_key
             )
         return response
