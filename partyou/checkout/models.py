@@ -85,7 +85,20 @@ class Order(models.Model):
         verbose_name_plural = 'Pedidos'
 
     def __str__(self):
-        return 'Pedido #{}'.format(self.pk)
+        return 'Pedido #{}'.format(self.pk)  # pragma: no cover
+
+    def products(self):
+        products_ids = self.items.values_list('product')  # pragma: no cover
+        return Product.objects.filter(pk__in=products_ids)  # pragma: no cover
+
+    def total(self):
+        aggregate_queryset = self.items.aggregate(  # pragma: no cover
+            total=models.Sum(
+                models.F('price') * models.F('quantity'),
+                output_field=models.DecimalField()
+            )
+        )
+        return aggregate_queryset['total']  # pragma: no cover
 
 
 class OrderItem(models.Model):
