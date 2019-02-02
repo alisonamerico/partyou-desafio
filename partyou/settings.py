@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'partyou.base',
     'partyou.catalog',
-    'partyou.checkout'
+    'partyou.checkout',
 
 ]
 
@@ -75,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'partyou.checkout.middleware.cart_item_middleware',
 ]
 
 ROOT_URLCONF = 'partyou.urls'
