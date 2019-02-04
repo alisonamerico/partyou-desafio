@@ -35,6 +35,7 @@ git clone https://github.com/alisonamerico/partyou-desafio.git
 cd partyou-desafio
 cp contrib/env-sample .env
 pipenv install
+pipenv shell
 ```
 Se você quiser usar o SQLite no seu ambiente de desenvolvimento, remova DATABASE_URL do arquivo .env. Caso contrário, preencha este valor com suas credenciais de banco de dados.
 
