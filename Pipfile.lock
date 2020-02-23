@@ -39,11 +39,10 @@
         },
         "collectfast": {
             "hashes": [
-                "sha256:8da781c000e3bc0153166d830fd285da44f5f570a550001df23282d243967004",
-                "sha256:fe6d811b25865bef5ae3b39c64b0d38776843f77a6d949ae449317afe84ed570"
+                "sha256:7733f71b9db940050e41bc3ce4abccf1309b048957744a3a6a8d55a867a47286",
+                "sha256:cdffa10277cfe5d72a666090edcefed23c7351b8ef7993575df12363796af2ee"
             ],
-            "index": "pypi",
-            "version": "==0.6.2"
+            "version": "==2.0.0"
         },
         "dj-database-url": {
             "hashes": [
