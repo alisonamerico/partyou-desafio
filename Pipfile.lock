@@ -85,11 +85,10 @@
         },
         "django-widget-tweaks": {
             "hashes": [
-                "sha256:a69cba6c8a6b98f0cf6eef0535f8212d635e19044ee4533d4d78df700c2e233f",
-                "sha256:bc645ef88307bc4ac269ee8ee9e572be814cd4a125c2bb6edb59ffcdc194982d"
+                "sha256:9f91ca4217199b7671971d3c1f323a2bec71a0c27dec6260b3c006fa541bc489",
+                "sha256:f80bff4a8a59b278bb277a405a76a8b9a884e4bae7a6c70e78a39c626cd1c836"
             ],
-            "index": "pypi",
-            "version": "==1.4.3"
+            "version": "==1.4.8"
         },
         "docutils": {
             "hashes": [
