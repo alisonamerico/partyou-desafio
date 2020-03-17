@@ -271,11 +271,10 @@
         },
         "codecov": {
             "hashes": [
-                "sha256:8ed8b7c6791010d359baed66f84f061bba5bd41174bf324c31311e8737602788",
-                "sha256:ae00d68e18d8a20e9c3288ba3875ae03db3a8e892115bf9b83ef20507732bed4"
+                "sha256:2c22451c8dea97c77c8325f6acd0b984c414ff8b5ce8a854ef7fc0f103bb0691",
+                "sha256:a46e5f636f46f8178de9d6fd05bfe72434edb318b5600ceff40e1e86bac758a3"
             ],
-            "index": "pypi",
-            "version": "==2.0.15"
+            "version": "==2.0.18"
         },
         "coverage": {
             "hashes": [
