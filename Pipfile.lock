@@ -33,10 +33,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:00a69a507e8b817d0703c612131e6cb3a3260579d0353c56d005bd9effd92ec0",
-                "sha256:4576ca751264c65420daae07e244beafdfea493b4fbb815d37215c0736dc4633"
+                "sha256:0f5f316ae1b089da3efac85524345954fa54e6e682ed60579f8c95c0d5aee3c4",
+                "sha256:3c741da411e117a08545877790e01b94c804cfb85b1981e40378cb8594af5406"
             ],
-            "version": "==1.19.20"
+            "version": "==1.19.33"
         },
         "certifi": {
             "hashes": [
