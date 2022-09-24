@@ -39,11 +39,8 @@
             "version": "==1.19.20"
         },
         "certifi": {
-            "hashes": [
-                "sha256:1f422849db327d534e3d0c5f02a263458c3955ec0aae4ff09b95f195c59f4edd",
-                "sha256:f05def092c44fbf25834a51509ef6e631dc19765ab8a57b4e7ab85531f0a9cf4"
-            ],
-            "version": "==2020.11.8"
+            "hashes": [],
+            "version": "==2022.9.24"
         },
         "collectfast": {
             "hashes": [
@@ -271,11 +268,8 @@
             "version": "==20.3.0"
         },
         "certifi": {
-            "hashes": [
-                "sha256:1f422849db327d534e3d0c5f02a263458c3955ec0aae4ff09b95f195c59f4edd",
-                "sha256:f05def092c44fbf25834a51509ef6e631dc19765ab8a57b4e7ab85531f0a9cf4"
-            ],
-            "version": "==2020.11.8"
+            "hashes": [],
+            "version": "==2022.9.24"
         },
         "chardet": {
             "hashes": [
